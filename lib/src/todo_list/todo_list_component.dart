@@ -1,4 +1,4 @@
-// Copyright (c) 2017, treks. All rights reserved. Use of this source code
+// Copyright (c) 2017, preigile. All rights reserved. Use of this source code
 // is governed by a BSD-style license that can be found in the LICENSE file.
 
 import 'dart:async';
@@ -18,6 +18,7 @@ import 'todo_list_service.dart';
   ],
   providers: const [TodoListService],
 )
+
 class TodoListComponent implements OnInit {
   final TodoListService todoListService;
 
@@ -35,7 +36,9 @@ class TodoListComponent implements OnInit {
     items.add(newTodo);
     newTodo = '';
   }
+
   String remove(int index) => items.removeAt(index);
+
   void onReorder(ReorderEvent e) =>
       items.insert(e.destIndex, items.removeAt(e.sourceIndex));
 }
