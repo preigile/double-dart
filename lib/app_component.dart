@@ -29,6 +29,7 @@ class AppComponent {
 
   void getPoint () {
     print(play.getPoint());
+    play.getScore();
   }
 }
 
@@ -60,16 +61,23 @@ class Play {
   Play() {
     this.target = new Target();
     step = 0;
+    score = 0;
   }
   
   getPoint() {
-    if(step < 3) {
-      step++;
-    } else {
-      step = 1;
-    }
-    print('step ${step}');
     randomNum = target.nums.values.elementAt(new Random().nextInt(target.nums.length));
     return randomNum;
+  }
+
+  getScore() {
+    if(step < 3) {
+      step++;
+      score += randomNum;
+    } else {
+      step = 1;
+      score = randomNum;
+    }
+    print('step ${step}');
+    print('Your score is ${score}!');
   }
 }
