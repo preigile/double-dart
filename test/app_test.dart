@@ -1,20 +1,20 @@
 @Tags(const ['aot'])
 @TestOn('browser')
-import 'dart:async';
+import 'dart:async' show Future;
 
 import 'package:angular2/angular2.dart';
 import 'package:angular_test/angular_test.dart';
 import 'package:pageloader/objects.dart';
 import 'package:test/test.dart';
 
-import 'package:double_dart/app_component.dart';
+import 'package:double_dart/app.dart';
 
-NgTestFixture<AppComponent> fixture;
+NgTestFixture<App> fixture;
 AppPO appPO;
 
 @AngularEntrypoint()
 void main() {
-  final testBed = new NgTestBed<AppComponent>();
+  final testBed = new NgTestBed<App>();
 
   setUp(() async {
     fixture = await testBed.create();
