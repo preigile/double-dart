@@ -26,7 +26,7 @@ class App {
   }
 
   void init() {
-    _game = new Game(
+    _game = new Game.scored(
         new Player.named("Vasya",
             new Dartboard(new Map())),
         new Player.named("Jora",

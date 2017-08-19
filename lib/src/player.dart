@@ -7,9 +7,10 @@ class Player {
   String _name;
   int _score;
 
-  Player.named(String name, Dartboard _dartboard) : this(name, 0, _dartboard);
+  Player.named(String name, Dartboard _dartboard) :
+        this(name, _dartboard, 0);
 
-  Player(this._name, this._score, this._dartboard);
+  Player(this._name, this._dartboard, this._score, );
 
   String name() {
     return _name;

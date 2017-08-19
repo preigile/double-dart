@@ -6,10 +6,13 @@ class Game {
   Player _secondPlayer;
   Player _current;
 
-  int _step = 0;
-  int _commonScore = 0;
+  int _step;
+  int _commonScore;
 
-  Game(this._firstPlayer, this._secondPlayer) {
+  Game.scored(Player firstPlayer, Player secondPlayer) :
+        this(firstPlayer, secondPlayer, 0, 0);
+
+  Game(this._firstPlayer, this._secondPlayer, this._step, this._commonScore) {
     this._current = _firstPlayer;
   }
 
@@ -31,7 +34,7 @@ class Game {
   }
 
   void _rotate() {
-    if(_current == _firstPlayer) {
+    if (_current == _firstPlayer) {
       _current = _secondPlayer;
     } else {
       _current = _firstPlayer;
