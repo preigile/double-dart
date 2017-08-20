@@ -4,9 +4,9 @@ import 'package:double_dart/src/player.dart';
 class Game {
 
   Participants _participants;
-  int _step;
+  int _hitsLimit;
 
-  Game(this._participants, this._step);
+  Game(this._participants, this._hitsLimit);
 
   Player playing() {
     return _participants.current();
@@ -15,17 +15,26 @@ class Game {
   void turn() {
     Player player = _participants.current();
 
-    if (_step < 3) {
-      int hit = player.hit();
-      _step++;
-      print('${player.name()} get ${hit} score');
-    } else {
-      print('Your common score is ${player.score()}!');
+    if (_hitsLimit == player.hitsCount()) {
+      rotate(player);
 
-      _participants.rotate();
-      _step = 0;
-
-      print('Next player is ${playing().name()}');
+      return;
     }
+
+    hit(player);
+  }
+
+  void rotate(Player player) {
+    print('Your common score is ${player.score()}!');
+
+    _participants.rotate();
+
+    print('Next player is ${playing().name()}');
+  }
+
+  void hit(Player player) {
+    int hit = player.hit();
+
+    print('${player.name()} get ${hit} score');
   }
 }

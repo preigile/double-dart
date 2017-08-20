@@ -28,6 +28,7 @@ class App {
 
   void init() {
     Dartboard dartboard = new Dartboard.simple();
+    int hitsLimit = 3;
 
     _game = new Game(
         new Participants.couple(
@@ -37,7 +38,7 @@ class App {
             new Player.named(
                 "Jora",
                 dartboard)),
-        0);
+        hitsLimit);
 
     print('Ready to play! ${_game.playing().name()}\'s turn.');
   }

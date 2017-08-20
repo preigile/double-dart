@@ -23,6 +23,10 @@ class Player {
     return hit;
   }
 
+  int hitsCount() {
+    return _hits.length;
+  }
+
   int score() {
     return _hits.reduce((a, b) => a + b);
   }
