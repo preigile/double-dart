@@ -4,6 +4,9 @@ class Dartboard {
 
   Map<String, int> _nums;
 
+  Dartboard.simple() :
+      this(new Map());
+
   Dartboard(this._nums);
 
   int randomScore() {

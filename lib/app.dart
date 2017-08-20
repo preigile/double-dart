@@ -5,6 +5,7 @@ import 'package:angular2/angular2.dart';
 import 'package:angular_components/angular_components.dart';
 import 'package:double_dart/src/dartboard.dart';
 import 'package:double_dart/src/game.dart';
+import 'package:double_dart/src/participants.dart';
 import 'package:double_dart/src/player.dart';
 
 // AngularDart info: https://webdev.dartlang.org/angular
@@ -26,11 +27,17 @@ class App {
   }
 
   void init() {
-    _game = new Game.scored(
-        new Player.named("Vasya",
-            new Dartboard(new Map())),
-        new Player.named("Jora",
-            new Dartboard(new Map())));
+    Dartboard dartboard = new Dartboard.simple();
+
+    _game = new Game(
+        new Participants.couple(
+            new Player.named(
+                "Vasya",
+                dartboard),
+            new Player.named(
+                "Jora",
+                dartboard)),
+        0);
 
     print('Ready to play! ${_game.playing().name()}\'s turn.');
   }

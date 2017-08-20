@@ -1,43 +1,31 @@
+import 'package:double_dart/src/participants.dart';
 import 'package:double_dart/src/player.dart';
 
 class Game {
 
-  Player _firstPlayer;
-  Player _secondPlayer;
-  Player _current;
+  Participants _participants;
   int _step;
 
-  Game.scored(Player firstPlayer, Player secondPlayer) :
-        this(firstPlayer, secondPlayer, 0);
-
-  Game(this._firstPlayer, this._secondPlayer, this._step) {
-    this._current = _firstPlayer;
-  }
+  Game(this._participants, this._step);
 
   Player playing() {
-    return _current;
+    return _participants.current();
   }
 
   void turn() {
-    if (_step < 3) {
-      var hit = _current.hit();
-      _step++;
-      print('${_current.name()} get ${hit} score');
-    } else {
-      print('Your common score is ${_current.score()}!');
+    Player player = _participants.current();
 
-      _rotate();
+    if (_step < 3) {
+      int hit = player.hit();
+      _step++;
+      print('${player.name()} get ${hit} score');
+    } else {
+      print('Your common score is ${player.score()}!');
+
+      _participants.rotate();
       _step = 0;
 
       print('Next player is ${playing().name()}');
-    }
-  }
-
-  void _rotate() {
-    if (_current == _firstPlayer) {
-      _current = _secondPlayer;
-    } else {
-      _current = _firstPlayer;
     }
   }
 }
